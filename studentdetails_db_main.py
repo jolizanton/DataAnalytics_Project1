@@ -13,7 +13,7 @@ try:
 except sqlite3.OperationalError:
     print("Table already exist")
 
-choice=input("Press '1' to enter the details. Press '2' to view the details:")
+choice=input("Press '1' to enter the details/Press '2' to view the details:")
 if choice=='1':
     active=True
     while active:
