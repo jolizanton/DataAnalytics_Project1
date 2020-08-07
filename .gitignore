@@ -1,0 +1,4 @@
+#Pycharm related
+venv/
+.idea
+.git
