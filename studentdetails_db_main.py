@@ -2,7 +2,7 @@ student_details = []
 
 import sqlite3
 
-conn = sqlite3.connect('student_details.db')
+conn = sqlite3.connect('db/student_details.db')
 cursor = conn.cursor()
 
 try:
@@ -13,7 +13,7 @@ try:
 except sqlite3.OperationalError:
     print("Table already exist")
 
-choice=input("Press '1' to enter the details. Press '2' to view the details")
+choice=input("Press '1' to enter the details. Press '2' to view the details:")
 if choice=='1':
     active=True
     while active:
@@ -50,9 +50,6 @@ else:
     active = True
     while active:
         details_required_roll_number = int(input("Enter the roll number:"))
-
-
-
         cursor = conn.execute("SELECT ROLL_NUMBER, NAME, CLASS from STUDENT_DETAILS_NEW")
         for row in cursor:
             if details_required_roll_number == row[0]:
