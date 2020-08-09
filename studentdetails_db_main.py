@@ -1,5 +1,3 @@
-student_details = []
-
 import sqlite3
 
 conn = sqlite3.connect('db/student_details.db')
@@ -15,6 +13,7 @@ except sqlite3.OperationalError:
 
 choice=input("Press '1' to enter the details/Press '2' to view the details:")
 if choice=='1':
+
     active=True
     while active:
         print ("Press q to quit")
