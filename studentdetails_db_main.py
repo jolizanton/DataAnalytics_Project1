@@ -30,9 +30,6 @@ if choice=='1':
         if Class == 'q':
             break
 
-        repeat = input("Would you like to store another student's details? (y/n) ")
-        if repeat == 'n':
-            active = False
 
         try:
             cursor.execute("""
@@ -45,20 +42,26 @@ if choice=='1':
         else:
             print ('Data entered successfully.')
 
+        repeat = input("Would you like to store another student's details? (y/n) ")
+        if repeat == 'n':
+            active = False
+
 else:
     active = True
     while active:
         details_required_roll_number = int(input("Enter the roll number:"))
         cursor = conn.execute("SELECT ROLL_NUMBER, NAME, CLASS from STUDENT_DETAILS_NEW")
+        data_exist=False
         for row in cursor:
-            if details_required_roll_number == row[0]:
+            if details_required_roll_number ==row[0]:
+                data_exist=True
                 print (f"Find the details of Roll number:{row[0]}")
                 print ("NAME = ", row[1])
                 print ("CLASS = ", row[2], "\n")
-        else:
+        if not data_exist:
             print ("Details of this roll number does not exist")
 
-        repeat = input("Would you like to see another student's details? (y/n) ")
+        repeat = input("Would you like to see another student's details? (y/n)")
         if repeat == 'n':
             active = False
 
